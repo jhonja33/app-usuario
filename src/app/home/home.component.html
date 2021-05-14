@@ -1,0 +1,58 @@
+<div class="container p-3">
+    <div class="row">
+
+        <div class='col-md-4'>
+            <form class="card"[formGroup]="usuarioForm">
+                <div class="card-body p-2">
+                    <input 
+                        formControlName="nombre" 
+                        class="form-control mb-1" 
+                        placeholder="Nombre"
+                    >
+                    <input 
+                        formControlName="id_Rol" 
+                        class="form-control mb-1" 
+                        placeholder="Rol"
+                    >
+                    <input 
+                        formControlName="activo" 
+                        class="form-control mb-1" 
+                        placeholder="Activo"
+                    >
+                    <button (click)="agregarUsuario()" class="btn btn-dark">Agregar</button> 
+
+                    <button (click)="editarUsuario()" class="btn btn-info mx-1">Actualizar</button>  
+                </div>
+            </form>
+        </div>
+
+        <div class="col-md-8">
+            <table class="table table-bordered table-dark">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>ID CLIENTE</th>
+                        <th>NOMBRE</th>
+                        <th>ROL</th>
+                        <th>ACTIVO</th>
+                        <th>ACCION</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let usuario of usuarios; index as i;">
+                        <td>{{i + i}}</td>
+                        <td>{{usuario.id_Usuario}}</td>
+                        <td>{{usuario.nombre}}</td>
+                        <td>{{usuario.id_Rol}}</td>
+                        <td>{{usuario.activo}}</td>
+                        <td>
+                            <button (click)="eliminarUsuario(usuario.id_Usuario)" class="btn btn-danger mx-1 ">Eliminar</button> 
+
+                            <button (click)="getUsuario(usuario.id_Usuario)" class="btn btn-success">Editar</button>   
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
